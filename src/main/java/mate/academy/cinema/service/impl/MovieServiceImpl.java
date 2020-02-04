@@ -21,7 +21,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<Movie> getAll() throws DataProcessingException {
+    public List<Movie> getAll() {
         return movieDao.getAll();
     }
 }

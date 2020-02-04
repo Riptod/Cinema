@@ -8,7 +8,7 @@ import mate.academy.cinema.service.MovieService;
 public class main {
     private static Injector injector = Injector.getInstance("mate.academy.cinema");
 
-    public static void main(String[] args) throws DataProcessingException {
+    public static void main(String[] args) {
         Movie movie = new Movie();
         movie.setTitle("Fast and Furious");
         MovieService movieService = (MovieService) injector.getInstance(MovieService.class);
