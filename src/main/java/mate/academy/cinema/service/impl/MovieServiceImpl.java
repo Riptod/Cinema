@@ -1,14 +1,11 @@
 package mate.academy.cinema.service.impl;
 
-
+import java.util.List;
 import mate.academy.cinema.dao.MovieDao;
-import mate.academy.cinema.exceptions.DataProcessingException;
 import mate.academy.cinema.lib.Inject;
 import mate.academy.cinema.lib.Service;
 import mate.academy.cinema.model.Movie;
 import mate.academy.cinema.service.MovieService;
-
-import java.util.List;
 
 @Service
 public class MovieServiceImpl implements MovieService {

@@ -2,47 +2,47 @@ package mate.academy.cinema.dao.impl;
 
 import java.util.List;
 import javax.persistence.criteria.CriteriaQuery;
-import mate.academy.cinema.dao.MovieDao;
+import mate.academy.cinema.dao.CinemaHallDao;
 import mate.academy.cinema.exceptions.DataProcessingException;
 import mate.academy.cinema.lib.Dao;
-import mate.academy.cinema.model.Movie;
+import mate.academy.cinema.model.CinemaHall;
 import mate.academy.cinema.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 @Dao
-public class MovieDaoImpl implements MovieDao {
+public class CinemaHallDaoImpl implements CinemaHallDao {
     private static final Logger LOGGER = Logger.getLogger(MovieDaoImpl.class);
 
     @Override
-    public Movie add(Movie movie) {
+    public CinemaHall add(CinemaHall cinemaHall) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            Long movieId = (Long) session.save(movie);
+            Long cinemaHallId = (Long) session.save(cinemaHall);
             transaction.commit();
-            movie.setId(movieId);
-            return movie;
+            cinemaHall.setId(cinemaHallId);
+            return cinemaHall;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
-            LOGGER.error("Cannot add movie to database", e);
-            throw new RuntimeException("Cant insert Movie", e);
+            LOGGER.error("Cannot add cinema hall to database", e);
+            throw new RuntimeException("Cant insert cinema hall", e);
         }
     }
 
     @Override
-    public List<Movie> getAll() {
+    public List<CinemaHall> getAll() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            CriteriaQuery<Movie> criteriaQuery =
-                    session.getCriteriaBuilder().createQuery(Movie.class);
-            criteriaQuery.from(Movie.class);
+            CriteriaQuery<CinemaHall> criteriaQuery =
+                    session.getCriteriaBuilder().createQuery(CinemaHall.class);
+            criteriaQuery.from(CinemaHall.class);
             return session.createQuery(criteriaQuery).getResultList();
         } catch (Exception e) {
-            LOGGER.error("Cannot show all movies from database", e);
-            throw new DataProcessingException("Cannot show all movies from database", e);
+            LOGGER.error("Cannot show all cinema hall from database", e);
+            throw new DataProcessingException("Cannot show all cinema hall from database", e);
         }
     }
 }
