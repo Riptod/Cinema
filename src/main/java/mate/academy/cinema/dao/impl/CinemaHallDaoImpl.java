@@ -7,13 +7,12 @@ import mate.academy.cinema.exceptions.DataProcessingException;
 import mate.academy.cinema.lib.Dao;
 import mate.academy.cinema.model.CinemaHall;
 import mate.academy.cinema.util.HibernateUtil;
-import org.apache.log4j.Logger;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 @Dao
 public class CinemaHallDaoImpl implements CinemaHallDao {
-    private static final Logger LOGGER = Logger.getLogger(MovieDaoImpl.class);
 
     @Override
     public CinemaHall add(CinemaHall cinemaHall) {
@@ -28,7 +27,6 @@ public class CinemaHallDaoImpl implements CinemaHallDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            LOGGER.error("Cannot add cinema hall to database", e);
             throw new RuntimeException("Cant insert cinema hall", e);
         }
     }
@@ -41,7 +39,6 @@ public class CinemaHallDaoImpl implements CinemaHallDao {
             criteriaQuery.from(CinemaHall.class);
             return session.createQuery(criteriaQuery).getResultList();
         } catch (Exception e) {
-            LOGGER.error("Cannot show all cinema hall from database", e);
             throw new DataProcessingException("Cannot show all cinema hall from database", e);
         }
     }
