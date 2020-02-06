@@ -18,9 +18,9 @@ import org.apache.log4j.Logger;
 
 import javax.naming.AuthenticationException;
 
-public class main {
+public class Main {
     private static Injector injector = Injector.getInstance("mate.academy.cinema");
-    private static final Logger LOGGER = LogManager.getLogger(main.class);
+    private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
         Movie movie = new Movie();
@@ -55,7 +55,7 @@ public class main {
             User user = authenticationService.login("bla bla", "admin");
             System.out.println(user);
         } catch (AuthenticationException e) {
-            LOGGER.error("No find user");
+            LOGGER.error("No find user", e);
         }
     }
 }
