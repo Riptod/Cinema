@@ -15,5 +15,7 @@
         <mapping class="mate.academy.cinema.model.Movie"/>
         <mapping class="mate.academy.cinema.model.MovieSession"/>
         <mapping class="mate.academy.cinema.model.User"/>
+        <mapping class="mate.academy.cinema.model.Ticket"/>
+        <mapping class="mate.academy.cinema.model.ShoppingCart"/>
     </session-factory>
 </hibernate-configuration>

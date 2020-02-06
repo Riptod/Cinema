@@ -4,6 +4,7 @@ import mate.academy.cinema.dao.UserDao;
 import mate.academy.cinema.lib.Inject;
 import mate.academy.cinema.model.User;
 import mate.academy.cinema.service.AuthenticationService;
+import mate.academy.cinema.service.ShoppingCartService;
 import mate.academy.cinema.util.HashUtil;
 
 import javax.naming.AuthenticationException;
@@ -11,6 +12,8 @@ import javax.naming.AuthenticationException;
 public class AuthenticationServiceImpl implements AuthenticationService {
     @Inject
     private UserDao userDao;
+    @Inject
+    private ShoppingCartService shoppingCartService;
 
     @Override
     public User login(String email, String password) throws AuthenticationException {
@@ -27,6 +30,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         user.setEmail(email);
         user.setSalt(HashUtil.getSalt());
         user.setPassword(HashUtil.hashPassword(password, user.getSalt()));
-        return userDao.add(user);
+        User newUser = userDao.add(user);
+        shoppingCartService.registerNewShoppingCart(newUser);
+        return newUser;
     }
 }
