@@ -9,6 +9,7 @@ import mate.academy.cinema.model.User;
 import mate.academy.cinema.service.OrderService;
 import mate.academy.cinema.service.ShoppingCartService;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -24,7 +25,7 @@ public class OrderServiceImpl implements OrderService {
         Order order = new Order();
         order.setTickets(shoppingCart.getTickets());
         order.setUser(user);
-        shoppingCartService.clear(shoppingCart);
+        order.setOrderTime(LocalDateTime.now());
         return orderDao.add(order);
     }
 

@@ -71,6 +71,7 @@ public class Main {
         ShoppingCart shoppingCart = shoppingCartService.getByUser(user);
         OrderService orderService = (OrderService) injector.getInstance(OrderService.class);
         orderService.completeOrder(user);
+        shoppingCartService.clear(shoppingCart);
         System.out.println(orderService.getOrderHistory(user));
     }
 }
