@@ -7,12 +7,14 @@ import mate.academy.cinema.lib.Injector;
 import mate.academy.cinema.model.CinemaHall;
 import mate.academy.cinema.model.Movie;
 import mate.academy.cinema.model.MovieSession;
+import mate.academy.cinema.model.ShoppingCart;
 import mate.academy.cinema.model.Ticket;
 import mate.academy.cinema.model.User;
 import mate.academy.cinema.service.AuthenticationService;
 import mate.academy.cinema.service.CinemaHallService;
 import mate.academy.cinema.service.MovieService;
 import mate.academy.cinema.service.MovieSessionServise;
+import mate.academy.cinema.service.OrderService;
 import mate.academy.cinema.service.ShoppingCartService;
 import mate.academy.cinema.service.UserService;
 import org.apache.log4j.LogManager;
@@ -64,8 +66,12 @@ public class Main {
                 (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
         User user = userService.findByEmail("bla bla");
         shoppingCartService.addSession(movieSession, user);
-        shoppingCartService.addSession(movieSession, user);
-        shoppingCartService.addSession(movieSession, user);
         System.out.println(shoppingCartService.getByUser(user));
+
+        ShoppingCart shoppingCart = shoppingCartService.getByUser(user);
+        OrderService orderService = (OrderService) injector.getInstance(OrderService.class);
+        orderService.completeOrder(user);
+        shoppingCartService.clear(shoppingCart);
+        System.out.println(orderService.getOrderHistory(user));
     }
 }
