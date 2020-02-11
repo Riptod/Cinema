@@ -1,5 +1,7 @@
 package mate.academy.cinema.dao.impl;
 
+import java.util.List;
+
 import mate.academy.cinema.dao.ShoppingCartDao;
 import mate.academy.cinema.lib.Dao;
 import mate.academy.cinema.model.ShoppingCart;
@@ -9,8 +11,6 @@ import mate.academy.cinema.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-
-import java.util.List;
 
 @Dao
 public class ShoppingCartDaoImpl implements ShoppingCartDao {
@@ -35,12 +35,12 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     public ShoppingCart getByUser(User user) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            List<Ticket> tickets = session.createQuery("select t from ShoppingCart as sc join " +
-                    "sc.tickets as t where sc.user = :user", Ticket.class)
+            List<Ticket> tickets = session.createQuery("select t from ShoppingCart as sc join "
+                    + "sc.tickets as t where sc.user = :user", Ticket.class)
                     .setParameter("user", user).getResultList();
             Query<ShoppingCart> query = session
                     .createQuery("FROM ShoppingCart where user = :user", ShoppingCart.class)
-            .setParameter("user", user);
+                    .setParameter("user", user);
             ShoppingCart shoppingCart = query.uniqueResult();
             shoppingCart.setTickets(tickets);
             return shoppingCart;

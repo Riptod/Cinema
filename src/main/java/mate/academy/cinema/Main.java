@@ -3,12 +3,12 @@ package mate.academy.cinema;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import javax.naming.AuthenticationException;
 import mate.academy.cinema.lib.Injector;
 import mate.academy.cinema.model.CinemaHall;
 import mate.academy.cinema.model.Movie;
 import mate.academy.cinema.model.MovieSession;
 import mate.academy.cinema.model.ShoppingCart;
-import mate.academy.cinema.model.Ticket;
 import mate.academy.cinema.model.User;
 import mate.academy.cinema.service.AuthenticationService;
 import mate.academy.cinema.service.CinemaHallService;
@@ -19,8 +19,6 @@ import mate.academy.cinema.service.ShoppingCartService;
 import mate.academy.cinema.service.UserService;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-
-import javax.naming.AuthenticationException;
 
 public class Main {
     private static Injector injector = Injector.getInstance("mate.academy.cinema");

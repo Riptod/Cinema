@@ -1,5 +1,8 @@
 package mate.academy.cinema.dao.impl;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import mate.academy.cinema.dao.UserDao;
 import mate.academy.cinema.exceptions.DataProcessingException;
 import mate.academy.cinema.lib.Dao;
@@ -7,10 +10,6 @@ import mate.academy.cinema.model.User;
 import mate.academy.cinema.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 @Dao
 public class UserDaoImpl implements UserDao {

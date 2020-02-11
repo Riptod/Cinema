@@ -1,8 +1,7 @@
 package mate.academy.cinema.service;
 
-import mate.academy.cinema.model.User;
-
 import javax.naming.AuthenticationException;
+import mate.academy.cinema.model.User;
 
 public interface AuthenticationService {
     User login(String email, String password) throws AuthenticationException;

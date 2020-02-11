@@ -1,9 +1,8 @@
 package mate.academy.cinema.dao;
 
+import java.util.List;
 import mate.academy.cinema.model.Order;
 import mate.academy.cinema.model.User;
-
-import java.util.List;
 
 public interface OrderDao {
     Order add(Order order);
