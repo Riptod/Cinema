@@ -3,16 +3,18 @@ package mate.academy.cinema.service.impl;
 import javax.naming.AuthenticationException;
 
 import mate.academy.cinema.dao.UserDao;
-import mate.academy.cinema.lib.Inject;
 import mate.academy.cinema.model.User;
 import mate.academy.cinema.service.AuthenticationService;
 import mate.academy.cinema.service.ShoppingCartService;
 import mate.academy.cinema.util.HashUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AuthenticationServiceImpl implements AuthenticationService {
-    @Inject
+    @Autowired
     private UserDao userDao;
-    @Inject
+    @Autowired
     private ShoppingCartService shoppingCartService;
 
     @Override

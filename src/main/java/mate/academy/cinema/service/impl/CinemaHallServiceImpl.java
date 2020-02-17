@@ -1,15 +1,16 @@
 package mate.academy.cinema.service.impl;
 
 import java.util.List;
+
 import mate.academy.cinema.dao.CinemaHallDao;
-import mate.academy.cinema.lib.Inject;
-import mate.academy.cinema.lib.Service;
 import mate.academy.cinema.model.CinemaHall;
 import mate.academy.cinema.service.CinemaHallService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class CinemaHallServiceImpl implements CinemaHallService {
-    @Inject
+    @Autowired
     private CinemaHallDao cinemaHallDao;
 
     @Override
