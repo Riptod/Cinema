@@ -5,18 +5,23 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import mate.academy.cinema.dao.UserDao;
 import mate.academy.cinema.exceptions.DataProcessingException;
-import mate.academy.cinema.lib.Dao;
 import mate.academy.cinema.model.User;
-import mate.academy.cinema.util.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-@Dao
+@Repository
 public class UserDaoImpl implements UserDao {
+
+    @Autowired
+    private SessionFactory sessionFactory;
+
     @Override
     public User add(User user) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
             Long userId = (Long) session.save(user);
             transaction.commit();
@@ -32,7 +37,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User findByEmail(String email) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try (Session session = sessionFactory.openSession()) {
             CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
             CriteriaQuery<User> criteriaQuery =
                     criteriaBuilder.createQuery(User.class);
