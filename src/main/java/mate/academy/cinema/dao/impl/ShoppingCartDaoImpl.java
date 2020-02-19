@@ -3,6 +3,7 @@ package mate.academy.cinema.dao.impl;
 import java.util.List;
 
 import mate.academy.cinema.dao.ShoppingCartDao;
+import mate.academy.cinema.exceptions.DataProcessingException;
 import mate.academy.cinema.model.ShoppingCart;
 import mate.academy.cinema.model.Ticket;
 import mate.academy.cinema.model.User;
@@ -64,6 +65,15 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
                 transaction.rollback();
             }
             throw new RuntimeException("Cant add shopping cart", e);
+        }
+    }
+
+    @Override
+    public ShoppingCart get(Long id) {
+        try (Session session = sessionFactory.openSession()) {
+            return session.get(ShoppingCart.class, id);
+        } catch (Exception e) {
+            throw new DataProcessingException("Cannot get shopping cart by id: " + id, e);
         }
     }
 }
