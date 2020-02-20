@@ -1,4 +1,4 @@
-package mate.academy.cinema.controllers;
+package mate.academy.cinema.controller;
 
 import mate.academy.cinema.dto.UserRequestDto;
 import mate.academy.cinema.dto.UserResponseDto;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
@@ -26,10 +26,11 @@ public class UserController {
     }
 
     @PostMapping(value = "/")
-    public void addUser(@RequestBody UserRequestDto requestDto) {
+    public String addUser(@RequestBody UserRequestDto requestDto) {
         User user = new User();
         user.setEmail(requestDto.getEmail());
         user.setPassword(requestDto.getPassword());
         userService.add(user);
+        return "user added successfully";
     }
 }

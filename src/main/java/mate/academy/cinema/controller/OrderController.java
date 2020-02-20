@@ -1,4 +1,4 @@
-package mate.academy.cinema.controllers;
+package mate.academy.cinema.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;

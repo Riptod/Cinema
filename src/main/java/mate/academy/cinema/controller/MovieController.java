@@ -1,4 +1,4 @@
-package mate.academy.cinema.controllers;
+package mate.academy.cinema.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/movie")
+@RequestMapping("/movies")
 public class MovieController {
 
     @Autowired
     private MovieService movieService;
 
-    @PostMapping(value = "/")
+    @PostMapping
     public void addMovie(@RequestBody MovieDto requestDto) {
         Movie movie = new Movie();
         movie.setTitle(requestDto.getTitle());
@@ -28,7 +28,7 @@ public class MovieController {
         movieService.add(movie);
     }
 
-    @GetMapping(value = "/movies")
+    @GetMapping(value = "/")
     public List<MovieDto> getAll() {
         return movieService.getAll().stream().map(this::movieToDto)
                 .collect(Collectors.toList());

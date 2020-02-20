@@ -1,4 +1,4 @@
-package mate.academy.cinema.controllers;
+package mate.academy.cinema.controller;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -30,7 +30,7 @@ public class MovieSessionController {
     @Autowired
     private CinemaHallService cinemaHallService;
 
-    @PostMapping(value = "/")
+    @PostMapping
     public void addMovieSession(@RequestBody MovieSessionRequestDto requestDto) {
         MovieSession movieSession = new MovieSession();
         movieSession.setMovie(movieService.get(requestDto.getMovieId()));

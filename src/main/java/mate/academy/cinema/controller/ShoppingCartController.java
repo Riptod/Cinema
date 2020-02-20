@@ -1,4 +1,4 @@
-package mate.academy.cinema.controllers;
+package mate.academy.cinema.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,7 +29,7 @@ public class ShoppingCartController {
     @Autowired
     private ShoppingCartService shoppingCartService;
 
-    @PostMapping(value = "/")
+    @PostMapping(value = "/addmoviesession")
     public void addMovieSessionToSC(@RequestParam Long userId,
                                     @RequestBody ShoppingCartRequestDto requestDto) {
         shoppingCartService.addSession(movieSessionServise.get(requestDto.getMovieSessionId()),

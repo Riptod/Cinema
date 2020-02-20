@@ -9,7 +9,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"mate.academy.cinema.controllers"})
+@ComponentScan(basePackages = {"mate.academy.cinema.controller"})
 public class WebConfig {
 
     @Bean
