@@ -21,11 +21,12 @@ public class MovieController {
     private MovieService movieService;
 
     @PostMapping
-    public void addMovie(@RequestBody MovieDto requestDto) {
+    public String addMovie(@RequestBody MovieDto requestDto) {
         Movie movie = new Movie();
         movie.setTitle(requestDto.getTitle());
         movie.setDescription(requestDto.getDescription());
         movieService.add(movie);
+        return "Movie added successfully";
     }
 
     @GetMapping(value = "/")

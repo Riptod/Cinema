@@ -16,12 +16,14 @@ public class AuthenticationController {
     private AuthenticationService authenticationService;
 
     @PostMapping(value = "/register")
-    public void registerUser(@RequestBody UserRequestDto requestDto) {
+    public String registerUser(@RequestBody UserRequestDto requestDto) {
         authenticationService.register(requestDto.getEmail(), requestDto.getPassword());
+        return "Registration successfully";
     }
 
     @PostMapping(value = "/login")
-    public void login(@RequestBody UserRequestDto requestDto) throws AuthenticationException {
+    public String login(@RequestBody UserRequestDto requestDto) throws AuthenticationException {
         authenticationService.login(requestDto.getEmail(), requestDto.getPassword());
+        return "Login successfully";
     }
 }

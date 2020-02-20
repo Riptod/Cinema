@@ -31,12 +31,13 @@ public class MovieSessionController {
     private CinemaHallService cinemaHallService;
 
     @PostMapping
-    public void addMovieSession(@RequestBody MovieSessionRequestDto requestDto) {
+    public String addMovieSession(@RequestBody MovieSessionRequestDto requestDto) {
         MovieSession movieSession = new MovieSession();
         movieSession.setMovie(movieService.get(requestDto.getMovieId()));
         movieSession.setCinemaHall(cinemaHallService.get(requestDto.getCinemaHallId()));
         movieSession.setShowTime(LocalDateTime.parse(requestDto.getShowTime()));
         movieSessionServise.add(movieSession);
+        return "Movie session added successfully";
     }
 
     @GetMapping(value = "/available")

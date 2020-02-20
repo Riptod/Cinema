@@ -28,8 +28,9 @@ public class OrderController {
     private UserService userService;
 
     @PostMapping("/complete")
-    public void completeOrder(@RequestBody OrderRequestDto requestDto) {
+    public String completeOrder(@RequestBody OrderRequestDto requestDto) {
         orderService.completeOrder(userService.get(requestDto.getUserId()));
+        return "Order completed successfully";
     }
 
     @GetMapping("/getOrder")

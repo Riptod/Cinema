@@ -21,11 +21,12 @@ public class CinemaHallController {
     private CinemaHallService cinemaHallService;
 
     @PostMapping
-    public void addMovie(@RequestBody CinemaHallDto requestDto) {
+    public String addCinemaHall(@RequestBody CinemaHallDto requestDto) {
         CinemaHall cinemaHall = new CinemaHall();
         cinemaHall.setCapacity(requestDto.getCapacity());
         cinemaHall.setDescription(requestDto.getDescription());
         cinemaHallService.add(cinemaHall);
+        return "Cinema hall added successfully";
     }
 
     @GetMapping
