@@ -3,6 +3,13 @@ package mate.academy.cinema.config;
 import java.util.Properties;
 import javax.sql.DataSource;
 
+import mate.academy.cinema.model.CinemaHall;
+import mate.academy.cinema.model.Movie;
+import mate.academy.cinema.model.MovieSession;
+import mate.academy.cinema.model.Order;
+import mate.academy.cinema.model.ShoppingCart;
+import mate.academy.cinema.model.Ticket;
+import mate.academy.cinema.model.User;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -39,7 +46,9 @@ public class AppConfig {
         Properties properties = new Properties();
         properties.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
         properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
-        factoryBean.setAnnotatedPackages("mate.academy.cinema.model");
+        factoryBean.setAnnotatedClasses(User.class, Movie.class, CinemaHall.class,
+                MovieSession.class, Order.class, ShoppingCart.class, Ticket.class);
+        factoryBean.setHibernateProperties(properties);
         return factoryBean;
     }
 }

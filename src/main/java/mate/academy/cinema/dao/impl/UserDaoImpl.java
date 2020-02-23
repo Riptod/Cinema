@@ -48,4 +48,13 @@ public class UserDaoImpl implements UserDao {
             throw new DataProcessingException("Cannot show all movies from database", e);
         }
     }
+
+    @Override
+    public User get(Long id) {
+        try (Session session = sessionFactory.openSession()) {
+            return session.get(User.class, id);
+        } catch (Exception e) {
+            throw new DataProcessingException("Cannot get user by id: " + id, e);
+        }
+    }
 }
