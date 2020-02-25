@@ -1,6 +1,6 @@
 package mate.academy.cinema.controller;
 
-import mate.academy.cinema.dto.UserRequestDto;
+import mate.academy.cinema.dto.UserRegistrationDto;
 import mate.academy.cinema.dto.UserResponseDto;
 import mate.academy.cinema.model.User;
 import mate.academy.cinema.service.UserService;
@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/")
-    public String addUser(@RequestBody UserRequestDto requestDto) {
+    public String addUser(@RequestBody UserRegistrationDto requestDto) {
         User user = new User();
         user.setEmail(requestDto.getEmail());
         user.setPassword(requestDto.getPassword());
