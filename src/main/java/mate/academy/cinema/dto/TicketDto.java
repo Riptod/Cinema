@@ -1,9 +1,16 @@
 package mate.academy.cinema.dto;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class TicketDto {
+    @NotNull @NotEmpty
     private Long ticketId;
+    @NotNull @NotEmpty
     private String movieTitle;
+    @NotNull @NotEmpty
     private String showTime;
+    @NotNull @NotEmpty
     private long cinemaHallId;
 
     public Long getTicketId() {

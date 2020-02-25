@@ -1,11 +1,17 @@
 package mate.academy.cinema.dto;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import mate.academy.cinema.lib.EmailConstraint;
 
 public class UserRegistrationDto {
-    @EmailConstraint
+    @EmailConstraint @NotNull @NotEmpty
     private String email;
+    @NotNull @NotEmpty @Min(6)
     private String password;
+    @NotNull @NotEmpty @Min(6)
     private String repeatPassword;
 
     public String getEmail() {

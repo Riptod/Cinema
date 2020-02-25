@@ -1,10 +1,13 @@
 package mate.academy.cinema.dto;
 
-import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class UserLoginDto {
-    @Email
+    @NotNull @NotEmpty @Min(5)
     private String email;
+    @NotNull @NotEmpty @Min(6)
     private String password;
 
     public String getEmail() {
