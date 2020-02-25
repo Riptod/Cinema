@@ -1,5 +1,6 @@
 package mate.academy.cinema.security;
 
+import mate.academy.cinema.model.Role;
 import mate.academy.cinema.model.User;
 import mate.academy.cinema.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class CustomUserDetailsServer implements UserDetailsService {
         if (user != null) {
             builder = org.springframework.security.core.userdetails.User.withUsername(email);
             builder.password(user.getPassword());
-            builder.roles(String.valueOf(user.getRoles()));
+            builder.roles(user.getRoles().stream().map(Role::getRoleName).toArray(String[]::new));
         } else {
             throw new UsernameNotFoundException("User not found.");
         }

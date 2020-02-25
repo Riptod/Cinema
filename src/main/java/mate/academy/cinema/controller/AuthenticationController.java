@@ -1,6 +1,7 @@
 package mate.academy.cinema.controller;
 
 import javax.naming.AuthenticationException;
+import javax.validation.Valid;
 
 import mate.academy.cinema.dto.UserLoginDto;
 import mate.academy.cinema.dto.UserRegistrationDto;
@@ -18,7 +19,7 @@ public class AuthenticationController {
     private AuthenticationService authenticationService;
 
     @PostMapping(value = "/register")
-    public String registerUser(@RequestBody UserRegistrationDto requestDto)
+    public String registerUser(@RequestBody @Valid UserRegistrationDto requestDto)
             throws AuthenticationException {
         if (!requestDto.getPassword().equals(requestDto.getRepeatPassword())) {
             throw new DataProcessingException("Passwords do not match");
@@ -28,7 +29,8 @@ public class AuthenticationController {
     }
 
     @PostMapping(value = "/login")
-    public String login(@RequestBody UserLoginDto requestDto) throws AuthenticationException {
+    public String login(@RequestBody @Valid UserLoginDto requestDto)
+            throws AuthenticationException {
         authenticationService.login(requestDto.getEmail(), requestDto.getPassword());
         return "Login successfully";
     }

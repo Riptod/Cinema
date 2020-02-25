@@ -3,6 +3,8 @@ package mate.academy.cinema.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import mate.academy.cinema.dto.CinemaHallDto;
 import mate.academy.cinema.model.CinemaHall;
 import mate.academy.cinema.service.CinemaHallService;
@@ -21,7 +23,7 @@ public class CinemaHallController {
     private CinemaHallService cinemaHallService;
 
     @PostMapping
-    public String addCinemaHall(@RequestBody CinemaHallDto requestDto) {
+    public String addCinemaHall(@RequestBody @Valid CinemaHallDto requestDto) {
         CinemaHall cinemaHall = new CinemaHall();
         cinemaHall.setCapacity(requestDto.getCapacity());
         cinemaHall.setDescription(requestDto.getDescription());

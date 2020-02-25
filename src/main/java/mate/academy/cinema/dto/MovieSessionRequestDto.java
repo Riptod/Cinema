@@ -4,11 +4,12 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class MovieSessionRequestDto {
-    @NotEmpty @NotNull
+    @NotNull
     private Long movieId;
-    @NotEmpty @NotNull
+    @NotNull
     private Long cinemaHallId;
-    @NotEmpty @NotNull
+    @NotEmpty
+    @NotNull
     private String showTime;
 
     public MovieSessionRequestDto(Long movieId, Long cinemaHallId, String showTime) {

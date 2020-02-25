@@ -3,6 +3,8 @@ package mate.academy.cinema.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import mate.academy.cinema.dto.OrderRequestDto;
 import mate.academy.cinema.dto.OrderResponseDto;
 import mate.academy.cinema.dto.TicketDto;
@@ -28,7 +30,7 @@ public class OrderController {
     private UserService userService;
 
     @PostMapping("/complete")
-    public String completeOrder(@RequestBody OrderRequestDto requestDto) {
+    public String completeOrder(@RequestBody @Valid OrderRequestDto requestDto) {
         orderService.completeOrder(userService.get(requestDto.getUserId()));
         return "Order completed successfully";
     }

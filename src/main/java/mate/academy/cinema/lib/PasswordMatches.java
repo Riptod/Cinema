@@ -8,13 +8,12 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-
-@Documented
-@Constraint(validatedBy = EmailValidator.class)
-@Target({ElementType.FIELD })
+@Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface EmailConstraint {
-    String message() default "Invalid email";
+@Constraint(validatedBy = PasswordMatchesValidator.class)
+@Documented
+public @interface PasswordMatches {
+    String message() default "Passwords don't match";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

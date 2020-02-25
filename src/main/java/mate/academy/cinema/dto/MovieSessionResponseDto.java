@@ -1,14 +1,8 @@
 package mate.academy.cinema.dto;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
 public class MovieSessionResponseDto {
-    @NotEmpty @NotNull
     private String title;
-    @NotEmpty @NotNull
     private Long cinemaHallId;
-    @NotEmpty @NotNull
     private String showTime;
 
     public String getTitle() {

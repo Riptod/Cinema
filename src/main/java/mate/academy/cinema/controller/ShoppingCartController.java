@@ -3,6 +3,8 @@ package mate.academy.cinema.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import mate.academy.cinema.dto.ShoppingCartRequestDto;
 import mate.academy.cinema.dto.TicketDto;
 import mate.academy.cinema.model.ShoppingCart;
@@ -31,7 +33,7 @@ public class ShoppingCartController {
 
     @PostMapping(value = "/addmoviesession")
     public String addMovieSessionToSC(@RequestParam Long userId,
-                                    @RequestBody ShoppingCartRequestDto requestDto) {
+                                    @RequestBody @Valid ShoppingCartRequestDto requestDto) {
         shoppingCartService.addSession(movieSessionServise.get(requestDto.getMovieSessionId()),
                 userService.get(userId));
         return "Movie session added successfully to shopping cart";
