@@ -7,6 +7,7 @@ import mate.academy.cinema.dto.UserResponseDto;
 import mate.academy.cinema.model.User;
 import mate.academy.cinema.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,8 +23,8 @@ public class UserController {
     private UserService userService;
 
     @GetMapping(value = "/byemail")
-    public UserResponseDto get(@RequestParam String email) {
-        User user = userService.findByEmail(email);
+    public UserResponseDto get(@RequestParam Authentication authentication) {
+        User user = userService.findByEmail(authentication.getName());
         return new UserResponseDto(user.getId(), user.getEmail());
     }
 
