@@ -21,14 +21,17 @@ public class InjectController {
 
     @PostConstruct
     private void postConstruct() {
-        Role role = new Role();
-        role.setRoleName("USER");
-        roleService.add(role);
+        Role userRole = new Role();
+        userRole.setRoleName("USER");
+        Role adminRole = new Role();
+        userRole.setRoleName("ADMIN");
+        roleService.add(userRole);
+        roleService.add(adminRole);
 
         User user = new User();
         user.setEmail("user@user.com");
         user.setPassword(passwordEncoder.encode("123"));
-        user.getRoles().add(role);
+        user.getRoles().add(adminRole);
         userService.add(user);
     }
 }

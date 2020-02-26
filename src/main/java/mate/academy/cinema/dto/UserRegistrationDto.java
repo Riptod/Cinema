@@ -9,7 +9,6 @@ import mate.academy.cinema.lib.PasswordMatches;
 @PasswordMatches
 public class UserRegistrationDto {
     @EmailConstraint
-    @NotNull
     private String email;
     @NotNull
     @Min(6)
