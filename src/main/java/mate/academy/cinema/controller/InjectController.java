@@ -24,7 +24,7 @@ public class InjectController {
         Role userRole = new Role();
         userRole.setRoleName("USER");
         Role adminRole = new Role();
-        userRole.setRoleName("ADMIN");
+        adminRole.setRoleName("ADMIN");
         roleService.add(userRole);
         roleService.add(adminRole);
 
