@@ -1,6 +1,11 @@
 package mate.academy.cinema.dto;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class MovieDto {
+    @NotEmpty
+    @NotNull
     private String title;
     private String description;
 

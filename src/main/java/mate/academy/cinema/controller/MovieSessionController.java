@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import mate.academy.cinema.dto.MovieSessionRequestDto;
 import mate.academy.cinema.dto.MovieSessionResponseDto;
 import mate.academy.cinema.model.MovieSession;
@@ -31,7 +33,7 @@ public class MovieSessionController {
     private CinemaHallService cinemaHallService;
 
     @PostMapping
-    public String addMovieSession(@RequestBody MovieSessionRequestDto requestDto) {
+    public String addMovieSession(@RequestBody @Valid MovieSessionRequestDto requestDto) {
         MovieSession movieSession = new MovieSession();
         movieSession.setMovie(movieService.get(requestDto.getMovieId()));
         movieSession.setCinemaHall(cinemaHallService.get(requestDto.getCinemaHallId()));

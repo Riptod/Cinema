@@ -1,16 +1,18 @@
 package mate.academy.cinema.dto;
 
-public class UserRequestDto {
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+public class UserLoginDto {
+    @NotNull
+    @NotEmpty
+    @Min(5)
     private String email;
+    @NotNull
+    @NotEmpty
+    @Min(6)
     private String password;
-
-    public UserRequestDto(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
-
-    public UserRequestDto() {
-    }
 
     public String getEmail() {
         return email;
