@@ -13,7 +13,7 @@ public class TicketDto {
     @NotEmpty
     private String showTime;
     @NotNull
-    private long cinemaHallId;
+    private Long cinemaHallId;
 
     public Long getTicketId() {
         return ticketId;

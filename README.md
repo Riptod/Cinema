@@ -7,8 +7,9 @@
 * [Authors](#authors)
 
 ## <a name="description"></a>Project description
-This project includes the purchase of tickets for sessions in the cinema, registration and user login, the creation of films, cinema halls, tickets. There is also a shopping cart and a history of its orders.
+This REST Api project includes the purchase of tickets for sessions in the cinema, registration and user login, the creation of films, cinema halls, tickets. There is also a shopping cart and a history of its orders.
 
+For testing should use Postman.
 ## <a name="structure"></a>Project Structure
 * Java 11
 * Maven 4.0.0
@@ -29,6 +30,7 @@ Install and configure db.properties.
 
 Write correct path to your log file in resources.log4j.properties.
 
+Install and configure Postman with using Authorization in Headers. 
 ## <a name="authors"></a>Authors
 GitHub: [profile](https://github.com/Riptod)
 

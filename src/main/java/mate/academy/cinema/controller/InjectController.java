@@ -1,7 +1,6 @@
 package mate.academy.cinema.controller;
 
 import javax.annotation.PostConstruct;
-
 import mate.academy.cinema.model.Role;
 import mate.academy.cinema.model.User;
 import mate.academy.cinema.service.RoleService;

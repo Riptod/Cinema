@@ -5,7 +5,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import mate.academy.cinema.dao.CinemaHallDao;
 import mate.academy.cinema.exceptions.DataProcessingException;
 import mate.academy.cinema.model.CinemaHall;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

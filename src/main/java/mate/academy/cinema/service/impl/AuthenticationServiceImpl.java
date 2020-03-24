@@ -1,7 +1,6 @@
 package mate.academy.cinema.service.impl;
 
 import javax.naming.AuthenticationException;
-
 import mate.academy.cinema.dao.UserDao;
 import mate.academy.cinema.model.User;
 import mate.academy.cinema.service.AuthenticationService;
