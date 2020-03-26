@@ -2,7 +2,6 @@ package mate.academy.cinema.lib;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-
 import mate.academy.cinema.dto.UserRegistrationDto;
 
 public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches,

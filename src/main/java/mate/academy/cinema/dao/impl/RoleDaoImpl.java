@@ -3,7 +3,6 @@ package mate.academy.cinema.dao.impl;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
 import mate.academy.cinema.dao.RoleDao;
 import mate.academy.cinema.exceptions.DataProcessingException;
 import mate.academy.cinema.model.Role;
@@ -32,7 +31,7 @@ public class RoleDaoImpl implements RoleDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Cant insert Movie", e);
+            throw new RuntimeException("Cant insert Role", e);
         }
     }
 
@@ -46,7 +45,7 @@ public class RoleDaoImpl implements RoleDao {
             criteriaQuery.where(criteriaBuilder.equal(root.get("roleName"), name));
             return session.createQuery(criteriaQuery).uniqueResult();
         } catch (Exception e) {
-            throw new DataProcessingException("Cannot show all movies from database", e);
+            throw new DataProcessingException("Cannot show all roles from database", e);
         }
     }
 }

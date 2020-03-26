@@ -1,7 +1,6 @@
 package mate.academy.cinema.dao.impl;
 
 import java.util.List;
-
 import mate.academy.cinema.dao.ShoppingCartDao;
 import mate.academy.cinema.exceptions.DataProcessingException;
 import mate.academy.cinema.model.ShoppingCart;

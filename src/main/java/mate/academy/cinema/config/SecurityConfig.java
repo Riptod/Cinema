@@ -2,6 +2,8 @@ package mate.academy.cinema.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -11,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
+@Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -26,9 +29,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers("/login", "/register").permitAll()
+                .antMatchers("/available", "/orders/*", "/shoppingcarts/*")
+                .hasRole("USER")
+                .antMatchers(HttpMethod.POST, "/movies").hasRole("ADMIN")
+                .antMatchers("/cinemahalls", "/movies",
+                        "/moviesessions", "/users/*").hasRole("ADMIN")
                 .anyRequest().authenticated()
-                .and()
-                .formLogin().permitAll()
+                .and().formLogin()
                 .and().httpBasic()
                 .and().csrf().disable();
     }

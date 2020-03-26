@@ -2,7 +2,6 @@ package mate.academy.cinema.dto;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
 import mate.academy.cinema.lib.EmailConstraint;
 import mate.academy.cinema.lib.PasswordMatches;
 

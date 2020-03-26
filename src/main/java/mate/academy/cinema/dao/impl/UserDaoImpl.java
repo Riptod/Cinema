@@ -31,7 +31,7 @@ public class UserDaoImpl implements UserDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Cant insert Movie", e);
+            throw new RuntimeException("Cant insert User", e);
         }
     }
 
@@ -45,7 +45,7 @@ public class UserDaoImpl implements UserDao {
             criteriaQuery.where(criteriaBuilder.equal(root.get("email"), email));
             return session.createQuery(criteriaQuery).uniqueResult();
         } catch (Exception e) {
-            throw new DataProcessingException("Cannot show all movies from database", e);
+            throw new DataProcessingException("Cannot show user by email", e);
         }
     }
 

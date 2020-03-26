@@ -2,7 +2,6 @@ package mate.academy.cinema.config;
 
 import java.util.Properties;
 import javax.sql.DataSource;
-
 import mate.academy.cinema.model.CinemaHall;
 import mate.academy.cinema.model.Movie;
 import mate.academy.cinema.model.MovieSession;

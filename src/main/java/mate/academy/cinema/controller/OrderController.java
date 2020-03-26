@@ -2,7 +2,6 @@ package mate.academy.cinema.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 import mate.academy.cinema.dto.OrderResponseDto;
 import mate.academy.cinema.dto.TicketDto;
 import mate.academy.cinema.model.Order;
